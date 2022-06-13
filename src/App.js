@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import Post from "./components/Post"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const posts = [
+	{
+		title: "Dinosaurs are awesome",
+		author: "Stealthy Stegosaurus",
+		body: "Check out this body property!",
+		comments: ["First!", "Second!", "Third!"],
+	},
+	{
+		title: "Dinosaurs are neat",
+		author: "Mr. T-Rex",
+		body: "I pity the fool that doesn't think dinosaurs are neat!",
+		comments: ["Wow!", "Amazing!", "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥"],
+	},
+]
+
+const App = () => {
+	const postComponents = posts.map((post, idx) => {
+		return (
+		  <Post
+		  key={`post${idx}`}
+			post={post}
+		  />
+		)
+	  })
+	return(
+		<div className="App">
+			<h1>Dinos Function</h1>
+			{postComponents}
+		</div>
+	)
 }
-
-export default App;
+export default App
